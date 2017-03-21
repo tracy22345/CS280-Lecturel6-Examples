@@ -6,20 +6,14 @@ using System.Threading.Tasks;
 
 namespace PokemonLibrary
 {
-    public class GrassTypePokemon : Pokemon
+    public abstract class GrassTypePokemon : Pokemon
     {
-        public int GrassTypePowerUpCandy { get; set; }
-
-        public int GrassTypePowerUpStarDust { get; set; }
-
         public GrassTypePokemon(
             string name,
             int nationalNo,
             string[] type,
             float height,
-            float weight,
-            int grassTypePowerUpCandy,
-            int grassTypePowerUpStarDust
+            float weight
         )
             : base(
                   name,
@@ -29,8 +23,14 @@ namespace PokemonLibrary
                   weight
                  )
         {
-            this.GrassTypePowerUpCandy = grassTypePowerUpCandy;
-            this.GrassTypePowerUpStarDust = grassTypePowerUpStarDust;
+            this.PowerUpCandy[this.Name] = 3;
+            this.PowerUpStardust[this.Name] = 3000;
+        }
+
+        public override void Attack()
+        {
+            base.Attack();
+            Console.WriteLine("使用草系大絕");
         }
     }
 }
